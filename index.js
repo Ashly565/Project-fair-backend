@@ -29,13 +29,24 @@ pfServer.use(router)
 pfServer.use('/uploads',express.static('./uploads'))
 
 // 7) provide PORT
-const PORT= 4000;
+// const PORT= 4000;
 
-// 8) run the server
-pfServer.listen(PORT,'0.0.0.0',()=>{
-    console.log(`pfServer is running in PORT ${PORT}`)
-})
+// // 8) run the server
+// pfServer.listen(PORT,'0.0.0.0',()=>{
+//     console.log(`pfServer is running in PORT ${PORT}`)
+// })
 
-pfServer.get('/',(req,res)=>{
-    res.send("server is running and waiting for client requests")
+// pfServer.get('/',(req,res)=>{
+//     res.send("server is running and waiting for client requests")
+// })
+const PORT = process.env.PORT || 4000;  // Use Render's PORT or fallback to 4000
+
+// Start the server (MUST bind to 0.0.0.0)
+pfServer.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on http://0.0.0.0:${PORT}`);
+});
+
+// Test route
+pfServer.get('/', (req, res) => {
+    res.send("Server is running! 🚀");
 })
