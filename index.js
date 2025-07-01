@@ -32,7 +32,7 @@ pfServer.use('/uploads',express.static('./uploads'))
 const PORT= 4000;
 
 // 8) run the server
-pfServer.listen(PORT,()=>{
+pfServer.listen(PORT,'0.0.0.0',()=>{
     console.log(`pfServer is running in PORT ${PORT}`)
 })
 
